@@ -1,5 +1,3 @@
-"use client";
-
 import React, { useState } from "react";
 import {
   Dialog,
@@ -17,19 +15,24 @@ import { Input } from "./ui/input";
 import CodeMirror from "@uiw/react-codemirror";
 import { json } from "@codemirror/lang-json";
 
-export default function AddJsonDialog() {
+interface AddJsonDialogProps {
+  onSave: (name: string, value: string) => Promise<void>;
+}
+export default function AddJsonDialog({ onSave }: AddJsonDialogProps) {
   const [jsonData, setJsonData] = useState("");
   const [jsonName, setJsonName] = useState("");
-  const handleSave = () => {
-    return {
-      jsonData,
-      jsonName,
-    };
+  const [openModal, setOpenModal] = useState<boolean>(false);
+
+  const handleSave = async () => {
+    await onSave(jsonName, jsonData);
+    setOpenModal(false);
+    setJsonData("");
+    setJsonName("");
   };
 
   return (
     <div>
-      <Dialog>
+      <Dialog open={openModal} onOpenChange={setOpenModal}>
         <DialogTrigger asChild>
           <Button>Add Json Data</Button>
         </DialogTrigger>
