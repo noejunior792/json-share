@@ -52,11 +52,6 @@ npm run dev
 yarn dev
 ```
 
-## 🎥 Video Tutorial
-
-For a detailed step-by-step guide on how to build this project, you can watch the tutorial video:
-[JSON Share Project Tutorial](https://youtu.be/H0GUJV5a8Wg)
-
 ## 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome! Feel free to check the [issues page](https://github.com/ckriswinarto/sharejson/issues).
